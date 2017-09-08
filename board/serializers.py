@@ -29,7 +29,8 @@ class TaskSerializer(serializers.ModelSerializer):
 
 
     assigned = serializers.SlugRelatedField(
-        slug_field=User.USERNAME_FIELD, required=False)
+        slug_field=User.USERNAME_FIELD, required=False, allow_null=True,
+        queryset=User.objects.all())
     # status_display is a read-only field to be serialized that returns the value
     # of the get_status_display method on the serializer.
     # It shows the status text instead of a number.
