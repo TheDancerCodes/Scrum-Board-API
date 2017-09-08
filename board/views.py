@@ -32,7 +32,7 @@ class DefaultsMixin(object):
 class SprintViewSet(DefaultsMixin, viewsets.ModelViewSet):
     """"API Endpoint for listing and creating sprints."""
 
-    query_set = Sprint.objects.order_by('end_date')
+    queryset = Sprint.objects.order_by('end_date')
     serializer_class = SprintSerializer
 
 

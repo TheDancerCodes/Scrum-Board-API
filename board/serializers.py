@@ -11,11 +11,11 @@ User = get_user_model()
 
 class SprintSerializer(serializers.ModelSerializer):
 
-    links = serializers.SerializerMethodField('get_links')
+    links = serializers.SerializerMethodField()
 
     class Meta:
         model = Sprint
-        fields = ('id', 'name', 'description', 'end', 'links', )
+        fields = ('id', 'name', 'description', 'end_date', 'links', )
 
     def get_links(self, obj):
         request = self.context['request']
@@ -35,7 +35,7 @@ class TaskSerializer(serializers.ModelSerializer):
     # of the get_status_display method on the serializer.
     # It shows the status text instead of a number.
     status_display = serializers.SerializerMethodField('get_status_display')
-    links = serializers.SerializerMethodField('get_links')
+    links = serializers.SerializerMethodField()
 
     class Meta:
         model = Task
@@ -65,7 +65,7 @@ class TaskSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
 
     full_name = serializers.CharField(source='get_full_name', read_only=True)
-    links = serializers.SerializerMethodField('get_links')
+    links = serializers.SerializerMethodField()
 
     class Meta:
         model = User
